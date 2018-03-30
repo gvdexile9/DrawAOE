@@ -20,7 +20,7 @@ namespace DrawAOE
 
         public override void Initialise()
         {
-            PluginName = "DrawAOE";
+            PluginName = "Draw AOE";
 
             OnSettingsToggle();
             Settings.Enable.OnValueChanged += OnSettingsToggle;
@@ -52,61 +52,68 @@ namespace DrawAOE
 
         public override void Render()
         {
+            try
+            { 
+                if (!Settings.Enable.Value) return;
 
-            if (!Settings.Enable.Value) return;
 
-
-            if (Settings.CircleEnable.Value)
-            {
-                if (!Settings.DisplayInTown.Value && isTown)
+                if (Settings.CircleEnable.Value)
                 {
-                    return;
+                    if (!Settings.DisplayInTown.Value && isTown)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        var pos = GameController.Game.IngameState.Data.LocalPlayer.GetComponent<Render>().Pos;
+                        DrawEllipseToWorld(pos, Settings.CircleSize.Value, 50, Settings.LineWidth.Value, Settings.LineColor.Value);
+                    }
                 }
-                else
+
+                if (Settings.CircleEnable2.Value)
                 {
-                    var pos = GameController.Game.IngameState.Data.LocalPlayer.GetComponent<Render>().Pos;
-                    DrawEllipseToWorld(pos, Settings.CircleSize.Value, 50, Settings.LineWidth.Value, Settings.LineColor.Value);
+                    if (!Settings.DisplayInTown.Value && isTown)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        var pos = GameController.Game.IngameState.Data.LocalPlayer.GetComponent<Render>().Pos;
+                        DrawEllipseToWorld(pos, Settings.CircleSize2.Value, 50, Settings.LineWidth2.Value, Settings.LineColor2.Value);
+                    }
+                }
+
+                if (Settings.CircleEnable3.Value)
+                {
+                    if (!Settings.DisplayInTown.Value && isTown)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        var pos = GameController.Game.IngameState.Data.LocalPlayer.GetComponent<Render>().Pos;
+                        DrawEllipseToWorld(pos, Settings.CircleSize3.Value, 50, Settings.LineWidth3.Value, Settings.LineColor3.Value);
+                    }
+                }
+
+                if (Settings.CircleEnable4.Value)
+                {
+                    if (!Settings.DisplayInTown.Value && isTown)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        var pos = GameController.Game.IngameState.Data.LocalPlayer.GetComponent<Render>().Pos;
+                        DrawEllipseToWorld(pos, Settings.CircleSize4.Value, 50, Settings.LineWidth4.Value, Settings.LineColor4.Value);
+                    }
                 }
             }
-
-            if (Settings.CircleEnable2.Value)
+            catch (Exception)
             {
-                if (!Settings.DisplayInTown.Value && isTown)
-                {
-                    return;
-                }
-                else
-                {
-                    var pos = GameController.Game.IngameState.Data.LocalPlayer.GetComponent<Render>().Pos;
-                    DrawEllipseToWorld(pos, Settings.CircleSize2.Value, 50, Settings.LineWidth2.Value, Settings.LineColor2.Value);
-                }
             }
 
-            if (Settings.CircleEnable3.Value)
-            {
-                if (!Settings.DisplayInTown.Value && isTown)
-                {
-                    return;
-                }
-                else
-                {
-                    var pos = GameController.Game.IngameState.Data.LocalPlayer.GetComponent<Render>().Pos;
-                    DrawEllipseToWorld(pos, Settings.CircleSize3.Value, 50, Settings.LineWidth3.Value, Settings.LineColor3.Value);
-                }
-            }
 
-            if (Settings.CircleEnable4.Value)
-            {
-                if (!Settings.DisplayInTown.Value && isTown)
-                {
-                    return;
-                }
-                else
-                {
-                    var pos = GameController.Game.IngameState.Data.LocalPlayer.GetComponent<Render>().Pos;
-                    DrawEllipseToWorld(pos, Settings.CircleSize4.Value, 50, Settings.LineWidth4.Value, Settings.LineColor4.Value);
-                }
-            }
         }
 
         private void OnAreaChange(AreaController area)
@@ -129,7 +136,7 @@ namespace DrawAOE
                 var angle = slice * i;
                 var x = (decimal)vector3Pos.X + decimal.Multiply((decimal)radius, (decimal)Math.Cos(angle));
                 var y = (decimal)vector3Pos.Y + decimal.Multiply((decimal)radius, (decimal)Math.Sin(angle));
-                plottedCirclePoints.Add(new Vector3((float)x, (float)y, vector3Pos.Z));
+                plottedCirclePoints.Add(new Vector3((float)x, (float)y, vector3Pos.Z+60));
             }
 
             var rndEntity = GameController.Entities.FirstOrDefault(x =>
