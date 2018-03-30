@@ -15,7 +15,7 @@ namespace DrawAOE
         {
             //plugin itself
             Enable = false;
-            DisplayInTown = false;
+            DisplayInTown = true;
 
             CircleEnable = false;
             CircleSize = new RangeNode<int>(500, 50, 2000);
