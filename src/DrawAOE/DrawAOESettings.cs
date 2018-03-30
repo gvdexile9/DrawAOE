@@ -17,7 +17,7 @@ namespace DrawAOE
             Enable = false;
             DisplayInTown = false;
 
-            CircleEnable = true;
+            CircleEnable = false;
             CircleSize = new RangeNode<int>(500, 50, 2000);
             LineWidth = new RangeNode<int>(1, 1, 5);
             LineColor = new ColorBGRA(0, 255, 255, 255);
