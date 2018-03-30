@@ -1,0 +1,6 @@
+C:\POE\3.2 HUD\plugins\DrawAOE\DrawAOE\DrawAOE\obj\Debug\DrawAOE.csprojResolveAssemblyReference.cache
+C:\POE\3.2 HUD\plugins\DrawAOE\DrawAOE\DrawAOE\obj\Debug\DrawAOE.csproj.CoreCompileInputs.cache
+C:\POE\3.2 HUD\plugins\DrawAOE\DrawAOE\DrawAOE\obj\Debug\DrawAOE.dll
+C:\POE\3.2 HUD\plugins\DrawAOE\DrawAOE\DrawAOE\obj\Debug\DrawAOE.pdb
+C:\POE\3.2 HUD\plugins\DrawAOE\DrawAOE.dll
+C:\POE\3.2 HUD\plugins\DrawAOE\DrawAOE.pdb
