@@ -108,6 +108,8 @@ namespace DrawAOE
                         DrawEllipseToWorld(pos, Settings.CircleSize4.Value, 50, Settings.LineWidth4.Value, Settings.LineColor4.Value);
                     }
                 }
+
+                
             }
             catch (Exception)
             {
@@ -129,6 +131,8 @@ namespace DrawAOE
         {
             var camera = GameController.Game.IngameState.Camera;
 
+            float posOffset = GameController.Game.IngameState.Data.LocalPlayer.GetComponent<Render>().Bounds.Z;
+
             var plottedCirclePoints = new List<Vector3>();
             var slice = 2 * Math.PI / points;
             for (var i = 0; i < points; i++)
@@ -136,7 +140,7 @@ namespace DrawAOE
                 var angle = slice * i;
                 var x = (decimal)vector3Pos.X + decimal.Multiply((decimal)radius, (decimal)Math.Cos(angle));
                 var y = (decimal)vector3Pos.Y + decimal.Multiply((decimal)radius, (decimal)Math.Sin(angle));
-                plottedCirclePoints.Add(new Vector3((float)x, (float)y, vector3Pos.Z+60));
+                plottedCirclePoints.Add(new Vector3((float)x, (float)y, vector3Pos.Z+posOffset-20));
             }
 
             var rndEntity = GameController.Entities.FirstOrDefault(x =>
